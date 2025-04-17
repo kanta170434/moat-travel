@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table
+@Table(name = "houses")
 @Data
 public class House {
     @Id
@@ -26,7 +26,7 @@ public class House {
     private String imageName;
 
     @Column(name = "description")
-    private String dexcription;
+    private String description;
 
     @Column(name = "price")
     private Integer price;

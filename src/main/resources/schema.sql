@@ -1,31 +1,16 @@
-USE moattravelDB;
-GO
+DROP TABLE IF EXISTS houses;
 
-CREATE TABLE houses (
+CREATE TABLE houses
+(
     id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-    name VARCHAR(50) NOT NULL,
-    image_name VARCHAR(255),
-    description VARCHAR(255) NOT NULL,
+    name NVARCHAR(50) NOT NULL,
+    image_name NVARCHAR(255) NOT NULL,
+    description NVARCHAR(255) NOT NULL,
     price INT NOT NULL,
     capacity INT NOT NULL,
-    postal_code VARCHAR(50) NOT NULL,
-    address VARCHAR(255) NOT NULL,
-    phone_number VARCHAR(50) NOT NULL,
-    created_at DATETIME2 NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME2 NOT NULL DEFAULT CURRENT_TIMESTAMP
+    postal_code NVARCHAR(50) NOT NULL,
+    address NVARCHAR(255) NOT NULL,
+    phone_number NVARCHAR(50) NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT GETDATE(),
+    updated_at DATETIME NOT NULL DEFAULT GETDATE()
 );
-
-GO
-
-CREATE TRIGGER trg_UpdateUpdatedAt
-ON houses
-AFTER UPDATE
-AS
-BEGIN
-    SET NOCOUNT ON;
-    UPDATE houses
-    SET updated_at = CURRENT_TIMESTAMP
-    FROM houses h
-    INNER JOIN inserted i ON h.id = i.id;
-END;
-GO
