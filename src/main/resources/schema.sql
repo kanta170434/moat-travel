@@ -14,3 +14,30 @@ CREATE TABLE houses
     created_at DATETIME NOT NULL DEFAULT GETDATE(),
     updated_at DATETIME NOT NULL DEFAULT GETDATE()
 );
+
+DROP TABLE IF EXISTS roles;
+
+CREATE TABLE roles
+(
+    id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    name NVARCHAR(50) NOT NULL
+);
+
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users
+(
+    id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    name NVARCHAR(50) NOT NULL,
+    furigana NVARCHAR(50) NOT NULL,
+    postal_code NVARCHAR(50) NOT NULL,
+    address NVARCHAR(255) NOT NULL,
+    phone_number NVARCHAR(50) NOT NULL,
+    email NVARCHAR(255) NOT NULL UNIQUE,
+    password NVARCHAR(255) NOT NULL,
+    role_id INT NOT NULL,
+    enabled BIT NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT GETDATE(),
+    updated_at DATETIME NOT NULL DEFAULT GETDATE(),
+    FOREIGN KEY (role_id) REFERENCES roles(id)
+);
