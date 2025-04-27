@@ -1,3 +1,4 @@
+-- housesテーブル
 INSERT INTO houses
     (name, image_name, description, price, capacity, postal_code, address, phone_number)
 VALUES
@@ -277,3 +278,86 @@ INSERT INTO houses
     (name, image_name, description, price, capacity, postal_code, address, phone_number)
 VALUES
     (N'民宿 サムライ', N'house07.jpg', N'最寄り駅から徒歩10分。自然豊かで閑静な場所にあります。長期滞在も可能です。', 7000, 3, N'059-0027', N'北海道登別市青葉町X-XX-XX', N'012-345-678');
+
+-- rolesテーブル
+IF NOT EXISTS (SELECT *
+FROM roles
+WHERE name = 'ROLE_GENERAL')
+INSERT INTO roles
+    (name)
+VALUES
+    ('ROLE_GENERAL');
+
+IF NOT EXISTS (SELECT *
+FROM roles
+WHERE name = 'ROLE_ADMIN')
+INSERT INTO roles
+    (name)
+VALUES
+    ('ROLE_ADMIN');
+
+-- usersテーブル
+IF NOT EXISTS (
+    SELECT *
+FROM users
+WHERE email = 'taro.samurai@example.com'
+)
+INSERT INTO users
+    (name, furigana, postal_code, address, phone_number, email, password, role_id, enabled)
+VALUES
+    (N'侍 太郎', N'サムライ タロウ', '101-0022', N'東京都千代田区神田練塀町300番地', '090-1234-5678', 'taro.samurai@example.com', '$2a$10$2JNjTwZBwo7fprL2X4sv.OEKqxnVtsVQvuXDkI8xVGix.U3W5B7CO', 1, 1);
+
+INSERT INTO users
+    (name, furigana, postal_code, address, phone_number, email, password, role_id, enabled)
+VALUES
+    (N'侍 花子', N'サムライ ハナコ', '101-0022', N'東京都千代田区神田練塀町300番地', '090-1234-5678', 'hanako.samurai@example.com', '$2a$10$2JNjTwZBwo7fprL2X4sv.OEKqxnVtsVQvuXDkI8xVGix.U3W5B7CO', 2, 1);
+
+INSERT INTO users
+    (name, furigana, postal_code, address, phone_number, email, password, role_id, enabled)
+VALUES
+    (N'侍 義勝', N'サムライ ヨシカツ', '638-0644', N'奈良県五條市西吉野町湯川X-XX-XX', '090-1234-5678', 'yoshikatsu.samurai@example.com', 'password', 1, 0);
+
+INSERT INTO users
+    (name, furigana, postal_code, address, phone_number, email, password, role_id, enabled)
+VALUES
+    (N'侍 幸美', N'サムライ サチミ', '342-0006', N'埼玉県吉川市南広島X-XX-XX', '090-1234-5678', 'sachimi.samurai@example.com', 'password', 1, 0);
+
+INSERT INTO users
+    (name, furigana, postal_code, address, phone_number, email, password, role_id, enabled)
+VALUES
+    (N'侍 雅', N'サムライ ミヤビ', '527-0209', N'滋賀県東近江市佐目町X-XX-XX', '090-1234-5678', 'miyabi.samurai@example.com', 'password', 1, 0);
+
+INSERT INTO users
+    (name, furigana, postal_code, address, phone_number, email, password, role_id, enabled)
+VALUES
+    (N'侍 正保', N'サムライ マサヤス', '989-1203', N'宮城県柴田郡大河原町旭町X-XX-XX', '090-1234-5678', 'masayasu.samurai@example.com', 'password', 1, 0);
+
+INSERT INTO users
+    (name, furigana, postal_code, address, phone_number, email, password, role_id, enabled)
+VALUES
+    (N'侍 真由美', N'サムライ マユミ', '951-8015', N'新潟県新潟市松岡町X-XX-XX', '090-1234-5678', 'mayumi.samurai@example.com', 'password', 1, 0);
+
+INSERT INTO users
+    (name, furigana, postal_code, address, phone_number, email, password, role_id, enabled)
+VALUES
+    (N'侍 安民', N'サムライ ヤスタミ', '241-0033', N'神奈川県横浜市旭区今川町X-XX-XX', '090-1234-5678', 'yasutami.samurai@example.com', 'password', 1, 0);
+
+INSERT INTO users
+    (name, furigana, postal_code, address, phone_number, email, password, role_id, enabled)
+VALUES
+    (N'侍 章緒', N'サムライ アキオ', '739-2103', N'広島県東広島市高屋町宮領X-XX-XX', '090-1234-5678', 'akio.samurai@example.com', 'password', 1, 0);
+
+INSERT INTO users
+    (name, furigana, postal_code, address, phone_number, email, password, role_id, enabled)
+VALUES
+    (N'侍 祐子', N'サムライ ユウコ', '601-0761', N'京都府南丹市美山町高野X-XX-XX', '090-1234-5678', 'yuko.samurai@example.com', 'password', 1, 0);
+
+INSERT INTO users
+    (name, furigana, postal_code, address, phone_number, email, password, role_id, enabled)
+VALUES
+    (N'侍 秋美', N'サムライ アキミ', '606-8235', N'京都府京都市左京区田中西春菜町X-XX-XX', '090-1234-5678', 'akimi.samurai@example.com', 'password', 1, 0);
+
+INSERT INTO users
+    (name, furigana, postal_code, address, phone_number, email, password, role_id, enabled)
+VALUES
+    (N'侍 信平', N'サムライ シンペイ', '673-1324', N'兵庫県加東市新定X-XX-XX', '090-1234-5678', 'shinpei.samurai@example.com', 'password', 1, 0);
